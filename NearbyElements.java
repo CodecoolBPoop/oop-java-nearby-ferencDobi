@@ -13,8 +13,8 @@ public class NearbyElements {
         int itemsAfter = (lastIndex - y < range) ? lastIndex - y : range; 
         int[] items = new int[itemsBefore + itemsAfter];
 
-        for (int i = y - itemsBefore; i < y + itemsAfter; i++) {
-            items[i] = (i >= y) ? multi[x][i+1] : multi[x][i];
+        for (int i = 0, idx = y - itemsBefore; i < items.length; i++) {
+            items[i] = multi[x][(idx >= y) ? ++idx : idx++];
         }
 
         return items;
@@ -24,5 +24,6 @@ public class NearbyElements {
         System.out.println(Arrays.toString(nearby(0, 2, 2))); // [2, 0, 1241, 12]
         System.out.println(Arrays.toString(nearby(1, 0, 1))); // [3]
         System.out.println(Arrays.toString(nearby(1, 3, 5))); // [1, 3, 5]
+        System.out.println(Arrays.toString(nearby(0, 6, 1))); // [5, 1110]
     }
 }
